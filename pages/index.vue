@@ -6,7 +6,7 @@
             <h2>Student at Epitech</h2>
         </div>
         </div>
-        <div class="card">
+        <a class="card" href="about">
             <div class="card-content">
                 <div class="image">
                     <img src="~/assets/about.png" alt=""/>
@@ -18,7 +18,7 @@
                     <h3>Who am i ?</h3>
                 </div>
             </div>
-        </div>
+        </a>
         <a class="card" href="portfolio">
             <div class="card-content">
                 <div class="image">
@@ -33,8 +33,11 @@
                 </div>
             </div>
         </a>
-        <div class="card">
+        <a class="card" href="contact">
             <div class="card-content">
+                <div class="image">
+                    <img src="~/assets/contact.png" alt=""/>
+                </div>
                 <div class="text">
                     <h4>Contact</h4>
                 </div>
@@ -42,7 +45,7 @@
                     <h3>Want to contact me ?</h3>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
 </template>
 

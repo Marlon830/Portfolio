@@ -83,6 +83,7 @@ onMounted(async () => {
     font-weight: 400;
     margin: 0px;
     text-align: center;
+    padding-top: 115px;
 }
 
 .sous-text {

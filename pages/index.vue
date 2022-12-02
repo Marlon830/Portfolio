@@ -1,22 +1,128 @@
 <template>
-    <div class="mainBox">
-        <p>Mon <a href="https://github.com/Marlon830?tab=repositories" target="_blank">portfolio</a></p>
-        <p>Documentation <a href="https://v3.nuxtjs.org/" target="_blank">Nuxt 3</a></p>
-        <p>Documentation <a href="https://vuejs.org/" target="_blank">Vuejs</a></p>
+    <div id="cards">
+        <div class="card">
+            <div class="card-border"></div>
+            <div class="card-content">
+                ABOUT:
+            </div>
+        </div>
+        <a class="card" href="https://google.com" target="_blank">
+            <div class="card-border"></div>
+            <div class="card-content">
+                <div class="image">
+                    <img src="~/assets/image.png" alt=""/>
+                </div>
+                <div class="text">
+                    <h4>Github</h4>
+                </div>
+                <div class="sous-text">
+                    <h3>Portfolio projets persos</h3>
+                </div>
+            </div>
+        </a>
+        <div class="card">
+            <div class="card-border"></div>
+            <div class="card-content">
+                CONTACT:
+            </div>
+        </div>
     </div>
+    <ul id="example-1">
+        <li v-for="item in data">
+            <a :href="item.html_url">{{ item.name }}</a>
+        </li>
+    </ul>
+
 </template>
 
-<style scoped>
+<script setup>
+let data = await $fetch("/api/hello")
+onMounted(() => {
+    const handleOnMouseMove = e => {
+        const { currentTarget: target } = e;
 
-.mainBox {
+        const rect = target.getBoundingClientRect(),
+            x = e.clientX - rect.left,
+            y = e.clientY - rect.top;
+
+        target.style.setProperty("--mouse-x", `${x}px`);
+        target.style.setProperty("--mouse-y", `${y}px`);
+    }
+
+    for (const card of document.querySelectorAll(".card")) {
+        card.onmousemove = e => handleOnMouseMove(e);
+    }
+})
+</script>
+
+<style scoped>
+#cards {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
+    gap: 8px;
+    max-width: 916;
+    width: calc(100% - 20px);
 }
-a {
-    text-decoration: underline;
+
+.card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    height: 260px;
+    position: relative;
+    width: 300px;
 }
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card::before {
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
+            rgba(255, 255, 255, 0.06),
+            transparent 40%);
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms;
+    width: 100%;
+    z-index: 2;
+}
+
+.card>.card-content {
+    background-color: rgb(23, 23, 23);
+    border-radius: inherit;
+    height: calc(100% - 2px);
+    margin: 1px;
+    width: calc(100% - 2px);
+}
+
+.text {
+    color: rgb(214, 205, 205);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    margin: 0px;
+    text-align: center;
+}
+
+.sous-text {
+    color: rgb(145, 145, 145);
+    font-family: "Rubik", sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    margin: 0px;
+    text-align: center;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 </style>

@@ -1,59 +1,26 @@
 <template>
     <div id="cards">
-        <div class="text">
-            <h1>Marlon PEGAHI</h1>
-            <div class="sous-text">
-            <h2>Student at Epitech</h2>
-        </div>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <div class="image">
-                    <img src="~/assets/about.png" alt=""/>
-                </div>
-                <div class="text">
-                    <h4>About me</h4>
-                </div>
-                <div class="sous-text">
-                    <h3>Who am i ?</h3>
-                </div>
-            </div>
-        </div>
-        <a class="card" href="portfolio">
-            <div class="card-content">
-                <div class="image">
-                    <img src="~/assets/image.png" alt=""/>
-                </div>
-                <div class="text">
-                    <h4>Github</h4>
-                </div>
-                <div class="sous-text">
-                    <h3>{Portfolio}
-                        Want to see what i've done ?</h3>
-                </div>
-            </div>
-        </a>
+    <a v-for="item in data" :href="item.html_url">
         <div class="card">
             <div class="card-content">
                 <div class="text">
-                    <h4>Contact</h4>
-                </div>
-                <div class="sous-text">
-                    <h3>Want to contact me ?</h3>
+                <h4>{{ item.name }}</h4>
                 </div>
             </div>
         </div>
+    </a>
     </div>
 </template>
 
 <script setup>
+    let data = await $fetch("/api/hello")
 onMounted(async () => {
     const handleOnMouseMove = e => {
         const { currentTarget: target } = e;
 
-        const rect = target.getBoundingClientRect()
-        let    x = e.clientX - rect.left
-        let    y = e.clientY - rect.top;
+        const rect = target.getBoundingClientRect(),
+            x = e.clientX - rect.left,
+            y = e.clientY - rect.top;
 
         target.style.setProperty("--mouse-x", `${x}px`);
         target.style.setProperty("--mouse-y", `${y}px`);

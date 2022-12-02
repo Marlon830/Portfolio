@@ -50,11 +50,6 @@ hr {
     border-width: 1px;
 }
 
-button,
-[role='button'] {
-  cursor: pointer;
-}
-
 a {
     color: inherit;
     text-decoration: inherit;

@@ -16,7 +16,7 @@
                 </div>
             </div>
         </a>
-        <a class="card" href="https://discordapp.com/users/952861093095690300">
+        <a class="card" href="https://discordapp.com/users/952861093095690300" target="blank">
             <div class="card-content">
                 <div class="image">
                     <img src="~/assets/real_realdiscord.png" alt=""/>
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </a>
-        <a class="card" href="https://github.com/Marlon830">
+        <a class="card" href="https://github.com/Marlon830" target="blank">
             <div class="card-content">
                 <div class="image">
                     <img src="~/assets/image.png" alt=""/>
